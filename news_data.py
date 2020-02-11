@@ -13,8 +13,8 @@ urlList = ['https://news.yahoo.co.jp',
     'https://news.yahoo.co.jp/categories/life',
     'https://news.yahoo.co.jp/categories/local']
 
-def TitleText():
-    text = []
+def TextData():
+    textData = []
 
     for url in urlList:
         html = requests.get(url)
@@ -22,7 +22,6 @@ def TitleText():
 
         for i in range(1, 9):
             for title in news.select("li.topicsListItem:nth-child(" + str(i) + ")"):
-                text.append(title.getText())
-                print(title.getText())
+                textData.append(title.getText())
     
-    return str(text)
+    return textData
