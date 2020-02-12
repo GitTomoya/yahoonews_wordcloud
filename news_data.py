@@ -23,5 +23,6 @@ def TextData():
         for i in range(1, 9):
             for title in news.select("li.topicsListItem:nth-child(" + str(i) + ")"):
                 textData.append(title.getText())
+                print("取得:" + title.getText() + "\n")
     
     return textData

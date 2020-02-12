@@ -10,22 +10,19 @@ def GenerateWordCloud(option):
     width=1000,height=800)
 
     if len(option) < 2:
-        td = str(TextData()).replace("'", "")
-        print(td)
 
-        return word.generate(td)
+        return word.generate(str(TextData()).replace("'", ""))
 
     elif option[1] == "-mecab":
-        wl = ''.join(WordList())
-        print(wl)
-
-        return word.generate(wl)
+        
+        return word.generate(''.join(WordList()))
 
     else:
         print("引数が無効です")
         sys.exit()
 
 def WordList():
+
     m = mecab.Tagger("-Ochasen")
     wordList = []
     textData = TextData()
@@ -42,5 +39,7 @@ def WordList():
             node = node.next
             if node is None:
                 break
+
+    print("mecabを利用して形態素解析を行っています\n")
 
     return wordList
